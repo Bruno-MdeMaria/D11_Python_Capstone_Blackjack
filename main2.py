@@ -28,10 +28,10 @@ def compare():
             print(f"Seu adversário e você tem um Blackjack = {jogador1}. Empatou!!")
         elif soma_cpu == 0:
             print(f"Seu Adverário tem um Blackjack{cpu}. Você perdeu!")
-        elif soma_jogador1 == 21:
-            print(f"Suas cartas são {jogador1} e a soma delas é {soma_jogador1}. Parabens você venceu!")
-        elif soma_cpu == 21:
-            print(f"Seu adverssário recebeu as cartas {cpu} e a soma delas é {soma_cpu}. Você perdeu!")
+        elif soma_jogador1 > 21:
+            print(f"Suas cartas são {jogador1} e a soma delas é {soma_jogador1}. Você!")
+        elif soma_cpu > 21:
+            print(f"Seu adverssário recebeu as cartas {cpu} e a soma delas é {soma_cpu}. Você ganhou!")
         elif soma_cpu == soma_jogador1:
             print(f"Voce recebeu as cartas {jogador1} e a soma delas é {soma_jogador1} o mesmo de seu adversário {cpu}. Empatou!")
         
