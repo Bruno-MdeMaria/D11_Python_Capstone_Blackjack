@@ -49,9 +49,11 @@ print(jogador1)
 soma_jogador1 = soma_mao(jogador1)
 soma_cpu = soma_mao(cpu)
 
-print(f"Você recebeu as cartas: {jogador1}\nSua pontuação atual é {soma_jogador1}.\n")
+print(f"Você recebeu as cartas: {jogador1}\nA soma de suas cartas é {soma_jogador1}.\n")
 print(f"A primeira das duas cartas do seu adversário é {cpu[0]}.\n")
 
 compare()
 
-
+nova = input("Digite 'S' se você quer uma nova carta ou 'N' para passar:\n ").lower()
+if nova == "s":
+    jogador1.append(mao_carta1())
