@@ -21,12 +21,12 @@ def soma_mao(cartas):
     return sum(cartas)
 
 def compare():
-        if soma_jogador1 == 0:
+        if soma_cpu == 0:
+            print(f"Seu Adverário tem um Blackjack{cpu}. Você perdeu!")
+        elif soma_jogador1 == 0:
             print(f"Você tem um Blackjack{jogador1}. Parabéns você ganhou!!")
         elif soma_jogador1 == 0 and soma_cpu == 0:
             print(f"Seu adversário e você tem um Blackjack = {jogador1}. Empatou!!")
-        elif soma_cpu == 0:
-            print(f"Seu Adverário tem um Blackjack{cpu}. Você perdeu!")
         elif soma_jogador1 > 21:
             print(f"Suas cartas são: {jogador1} e a soma delas é {soma_jogador1}. Você perdeu!")
         elif soma_cpu > 21:
@@ -34,7 +34,22 @@ def compare():
         elif soma_cpu == soma_jogador1:
             print(f"Suas cartas são: {jogador1} e a soma delas é {soma_jogador1} o mesmo de seu adversário {cpu}. Empatou!")
         
-            
+def continua_para():
+    if soma_jogador1 < 21:
+        continua = True
+        print(f"Você recebeu as cartas: {jogador1}\nA soma de suas cartas é {soma_jogador1}.\n")
+    else: 
+        continua = False
+        print(f"Sua pontuação é: {soma_jogador1}. Você perdeu!") 
+
+def cpu_joga():
+    if soma_cpu < 17:
+        cartas = [11,2,3,4,5,6,7,8,9,10,10,10,10]
+        carta_recebida = random.choice(cartas)
+        cpu.append(carta_recebida)
+    else: continua = False
+        
+
 
 cpu = []
 jogador1 = []
@@ -48,11 +63,21 @@ print(jogador1)
 soma_jogador1 = soma_mao(jogador1)
 soma_cpu = soma_mao(cpu)
 
-print(f"Você recebeu as cartas: {jogador1}\nA soma de suas cartas é {soma_jogador1}.\n")
 print(f"A primeira das duas cartas do seu adversário é {cpu[0]}.\n")
+print(f"Você recebeu as cartas: {jogador1}\nA soma de suas cartas é {soma_jogador1}.\n")
+
 
 compare()
+continua_para()
 
-nova = input("Digite 'S' se você quer uma nova carta ou 'N' para passar:\n ").lower()
+
+continua = True
+nova = input("Digite 'S' se você quer uma nova carta ou 'N' para passar a vez:\n").lower()
 if nova == "s":
     jogador1.append(mao_carta1())
+    soma_mao(jogador1)
+    compare()
+    continua_para()
+else:
+    cpu_joga 
+    print(jogador1)
