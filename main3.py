@@ -26,27 +26,26 @@ def soma_mao(cartas):
 #Dica 13: Crie uma função chamada compare() e passe o user_score e computer_score. Se o computador e o usuário tiverem a mesma pontuação, é um empate. Se o computador tiver um blackjack (0), o usuário perde. Se o usuário tiver um blackjack (0), então o usuário ganha. Se o user_score for superior a 21, o usuário perde. Se o computer_score for superior a 21, o computador perde. Se nenhuma das opções acima, então o jogador com a maior pontuação ganha.
 def compare(soma_jogador1, soma_cpu):
         if soma_jogador1 > 21 and soma_cpu > 21:
-            return f"Suas cartas são: {jogador1} e a soma delas é {soma_jogador1} A soma do seu adverário é: {soma_cpu}. Você perdeu!😭"
+            return "Você perdeu!😭"
         if soma_cpu == 0:
-            return f"Seu Adverário tem um Blackjack{cpu}. Você perdeu!😱"
+            return "Você perdeu!😱"
         elif soma_jogador1 == 0:
-            return f"Você tem um Blackjack{jogador1}. Parabéns você ganhou!!😎"
+            return "Parabéns você ganhou!!😎"
         elif soma_jogador1 == 0 and soma_cpu == 0:
-            return f"Seu adversário e você tem um Blackjack = {jogador1}. Empatou!!🙃"
+            return "Seu adversário e você tem um Blackjack. Empatou!!🙃"
         elif soma_jogador1 > 21:
-            return f"Suas cartas são: {jogador1} e a soma delas é {soma_jogador1}. Você perdeu!😤"
+            return "Você perdeu!😤"
         elif soma_cpu > 21:
-            return f"Seu adverssário tem {cpu} e a soma delas é {soma_cpu}. Você ganhou!😁"
+            return "Você ganhou!😁"
         elif soma_cpu == soma_jogador1:
-            return f"Suas cartas são: {jogador1} e a soma delas é {soma_jogador1} o mesmo de seu adversário {cpu}. Empatou!😭"
+            return "Empatou!😭"
         elif soma_jogador1 > soma_cpu:
-            return f"Suas cartas são: {jogador1} e a soma delas é {soma_jogador1} A soma do seu adverário é: {soma_cpu}. Você ganhou!😃"
+            return "Você ganhou!😃"
         else: 
-            return f"Suas cartas são: {jogador1} e a soma delas é {soma_jogador1} A soma do seu adverário é: {soma_cpu}. Você perdeu!😤"
+            return "Você perdeu!😤"
         
 
 #Dica 5: Dê ao usuário e ao computador 2 cartas cada usando deal_card()
-
 
 
 def play_game():
@@ -56,6 +55,7 @@ def play_game():
 
     cpu = []
     jogador1 = []
+    fim_jogo = False
 
     for _ in range(2): #passa o código duas vezes;
         cpu.append(mao_carta1())
@@ -65,8 +65,8 @@ def play_game():
 
 
     #Dica 11: A pontuação deverá ser verificada novamente a cada nova carta retirada e as verificações da Dica 9 precisam ser repetidas até o fim do jogo.
-    fim_jogo = False
-    while fim_jogo == False:
+   
+    while not fim_jogo:
         soma_jogador1 = soma_mao(jogador1)
         soma_cpu = soma_mao(cpu)
 
@@ -85,9 +85,11 @@ def play_game():
     while soma_cpu != 0 and soma_cpu < 17:
         cpu.append(mao_carta1())
         soma_cpu = soma_mao(cpu)
+    print(f"Suas cartas são: {jogador1} e a soma delas é {soma_jogador1}.")
+    print(f"As cartas do seu adversário são: {cpu} e a soma delas é {soma_cpu}.")
     print(compare(soma_jogador1, soma_cpu))
 
-while input("Você deseja jogar mais uma partida de Blackjack? Digite 'S' ou 'N':\n").lower() == "s": #recebe a pergunta ejá compara a resposta como verdadeira para continuar o loop ou não.
+while input("\nVocê deseja jogar uma partida de Blackjack? Digite 'S' ou 'N':\n").lower() == "s": #recebe a pergunta ejá compara a resposta como verdadeira para continuar o loop ou não.
     os.system("cls")
     play_game()
 
